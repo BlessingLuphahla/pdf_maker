@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDD AXE PDF Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>REDD AXE PDF Generator</h1>
+        <p class="instructions">Enter your text below and click "Generate PDF" to create your document</p>
+        
+        <form method="POST" action="/">
+            <div class="form-group">
+                <textarea name="text" placeholder="Enter your text here..." required></textarea>
+            </div>
+            <button type="submit">Generate PDF</button>
+        </form>
+    </div>
+</body>
+</html>
