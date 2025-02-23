@@ -1,5 +1,13 @@
 from flask import Flask, request, render_template, make_response
 from fpdf import FPDF
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access environment variables
+PORT = os.getenv('PORT') or 5000
 
 app = Flask(__name__)
 
@@ -31,4 +39,4 @@ def home():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0',port=PORT)
