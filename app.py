@@ -7,7 +7,7 @@ import os
 load_dotenv()
 
 # Access environment variables
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
 
 app = Flask(__name__)
 
@@ -30,7 +30,7 @@ def home():
         pdf.multi_cell(0, 8, text_content)
         
         # Create response
-        pdf_bytes = pdf.output(dest='S')  # Returns a bytearray
+        pdf_bytes = pdf.output(dest='S').encode('latin1')
         response = make_response(pdf_bytes)
         response.headers.set('Content-Type', 'application/pdf')
         response.headers.set('Content-Disposition', 'attachment', filename='output.pdf')
@@ -39,4 +39,4 @@ def home():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=PORT)
+    app.run(host='0.0.0.0', port=PORT)
