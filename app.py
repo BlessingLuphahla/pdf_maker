@@ -2,11 +2,10 @@ from flask import Flask, request, render_template, make_response
 from fpdf import FPDF
 from dotenv import load_dotenv
 import os
-import random
-import string
+from datetime import datetime
 
-def generate_random_string(length=10):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+def get_current_date():
+    return datetime.now().strftime("%Y-%m-%d")
 
 # Load environment variables from .env file
 load_dotenv()
@@ -40,7 +39,7 @@ def home():
         pdf_bytes = pdf.output(dest='S')  # Returns a bytearray
         response = make_response(bytes(pdf_bytes))  # Convert to bytes explicitly
         response.headers.set('Content-Type', 'application/pdf')
-        response.headers.set('Content-Disposition', 'attachment', filename=f'output{generate_random_string()}.pdf')
+        response.headers.set('Content-Disposition', 'attachment', filename=f'output{get_current_date()}.pdf')
 
         return response
 
