@@ -1,148 +1,178 @@
 /* General Styles */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f2f5, #e0e5ec);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6;
 }
 
 .container {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 600px;
-  margin: 2rem auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-  color: #1a73e8;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2.2rem;
-  font-weight: 600;
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    animation: slideIn 0.8s ease-out;
 }
 
 .form-group {
-  margin-bottom: 1.8rem;
+    margin-bottom: 1.8rem;
 }
 
 textarea {
-  width: 100%;
-  height: 200px;
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  resize: vertical;
-  font-family: monospace;
-  font-size: 14px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    resize: vertical;
+    font-family: monospace;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-height: 400px;
 }
 
 textarea:focus {
-  outline: none;
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.2);
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.2);
 }
 
 button {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  transition: background 0.3s ease, transform 0.2s ease;
-  font-weight: 500;
+    background: linear-gradient(135deg, #1a73e8, #4a90e2);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
 }
 
 button:hover {
-  background: #1557b0;
-  transform: translateY(-2px);
+    background: linear-gradient(135deg, #1557b0, #357abd);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
 }
 
 button:active {
-  transform: translateY(0);
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
 }
 
 .instructions {
-  color: #666;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  body {
-    padding: 15px;
-  }
+    body {
+        padding: 15px;
+    }
 
-  .container {
-    padding: 1.5rem;
-    margin-top: 1rem;
-  }
+    .container {
+        padding: 1.5rem;
+        margin-top: 1rem;
+        max-width: 90%; /* Adjusted for better mobile fit */
+    }
 
-  h1 {
-    font-size: 1.8rem;
-  }
+    h1 {
+        font-size: 1.8rem;
+    }
 
-  textarea {
-    height: 150px;
-    padding: 12px;
-  }
+    textarea {
+        height: 150px;
+        padding: 12px;
+    }
 
-  button {
-    padding: 12px 24px;
-    font-size: 15px;
-  }
+    button {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
 
-  .instructions {
-    font-size: 0.9rem;
-  }
+    .instructions {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 10px;
-  }
+    body {
+        padding: 10px;
+    }
 
-  .container {
-    padding: 1rem;
-    border-radius: 8px;
-  }
+    .container {
+        padding: 1rem;
+        border-radius: 10px;
+        max-width: 95%; /* Further reduced for small screens */
+    }
 
-  h1 {
-    font-size: 1.6rem;
-  }
+    h1 {
+        font-size: 1.6rem;
+    }
 
-  textarea {
-    height: 120px;
-    padding: 10px;
-    font-size: 13px;
-  }
+    textarea {
+        height: 120px;
+        padding: 10px;
+        font-size: 13px;
+    }
 
-  button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 
-  .instructions {
-    font-size: 0.85rem;
-  }
+    .instructions {
+        font-size: 0.85rem;
+    }
 }
