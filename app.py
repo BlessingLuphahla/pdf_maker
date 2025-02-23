@@ -7,7 +7,7 @@ import os
 load_dotenv()
 
 # Access environment variables
-PORT = int(os.environ.get('PORT')) or 5000
+PORT = int(os.environ.get('PORT', 5000))
 
 app = Flask(__name__)
 
