@@ -1,0 +1,32 @@
+const cloudinary = require('cloudinary').v2;
+
+// Configure Cloudinary with your credentials
+cloudinary.config({
+  cloud_name: 'your-cloud-name',
+  api_key: 'your-api-key',
+  api_secret: 'your-api-secret'
+});
+
+// Function to delete image from Cloudinary
+const deleteImageFromCloudinary = async (publicId) => {
+  try {
+    // Delete the image using its public ID
+    const result = await cloudinary.uploader.destroy(publicId);
+    console.log('Image deleted from Cloudinary:', result);
+    return result;
+  } catch (error) {
+    console.error('Error deleting image from Cloudinary:', error);
+    throw error;
+  }
+};
+
+// Call the function to delete an image
+const deleteImage = async () => {
+  const publicId = 'sample';  // Replace with the actual public ID stored in your database
+  await deleteImageFromCloudinary(publicId);
+};
+
+deleteImage();
+
+
+
