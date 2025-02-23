@@ -2,6 +2,11 @@ from flask import Flask, request, render_template, make_response
 from fpdf import FPDF
 from dotenv import load_dotenv
 import os
+import random
+import string
+
+def generate_random_string(length=10):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
 # Load environment variables from .env file
 load_dotenv()
@@ -10,6 +15,8 @@ load_dotenv()
 PORT = int(os.environ.get('PORT', 5000))  # Default to 5000 if PORT is not set
 
 app = Flask(__name__)
+
+random = 0
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -33,7 +40,7 @@ def home():
         pdf_bytes = pdf.output(dest='S')  # Returns a bytearray
         response = make_response(bytes(pdf_bytes))  # Convert to bytes explicitly
         response.headers.set('Content-Type', 'application/pdf')
-        response.headers.set('Content-Disposition', 'attachment', filename='output.pdf')
+        response.headers.set('Content-Disposition', 'attachment', filename=f'output{generate_random_string()}.pdf')
 
         return response
 
