@@ -22,7 +22,7 @@ def home():
         pdf.multi_cell(0, 8, text_content)
         
         # Create response
-        pdf_bytes = pdf.output(dest='S').encode('latin-1')
+        pdf_bytes = pdf.output(dest='S')  # Returns a bytearray
         response = make_response(pdf_bytes)
         response.headers.set('Content-Type', 'application/pdf')
         response.headers.set('Content-Disposition', 'attachment', filename='output.pdf')
