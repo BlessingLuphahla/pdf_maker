@@ -36,8 +36,8 @@ def home():
         pdf.multi_cell(0, 8, text_content)
 
         # Corrected output handling
-        pdf_bytes = pdf.output(dest='S')  # Returns a bytearray
-        response = make_response(bytes(pdf_bytes))  # Convert to bytes explicitly
+        pdf_bytes = pdf.output(dest='S')
+        response = make_response(bytes(pdf_bytes))
         response.headers.set('Content-Type', 'application/pdf')
         response.headers.set('Content-Disposition', 'attachment', filename=f'output{get_current_date()}.pdf')
 
